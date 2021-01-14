@@ -1,4 +1,4 @@
-Welcome to PST Approved
+# Welcome to PST Approved
 
 A Rails/React app that displays local restaurants in the Houston area. 
 
