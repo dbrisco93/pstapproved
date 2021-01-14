@@ -58,7 +58,6 @@ const onMapLoad = React.useCallback((map) => {
       <div className="Map">
           <h1>PST Checkmates <span role="img" aria-label="check">✅</span></h1> 
 
-        <Search />
 
         <GoogleMap
         mapContainerStyle={mapContainerStyle}
