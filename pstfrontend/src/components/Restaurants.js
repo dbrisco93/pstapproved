@@ -3,20 +3,29 @@ import React from 'react'
 import Map from './Map.js'
 
 class Restaurants extends React.Component {
+
     state = {
         restaurants: [],
-        errors: [],    }
+    }
 
-        componentDidMount() {
-            fetch('http://localhost:3000/restaurants')
-            .then(res => res.json())
-            .then(restaurants => this.setState( { restaurants }))
-        }
+    componentDidMount(){
+        fetch('http://localhost:3000/restaurants')
+        .then(res => res.json())
+        .then(restaurants => this.setState({ restaurants }))
+    }
+
+
 
     render() {
         return (
             <div className="Restaurants">
-                Some information about the restaurants up here and then
+
+                <ul>
+                    {this.state.restaurants.map(restaurant => (
+                        <li>{restaurant.name} <button>❤️</button></li>
+                    ))}
+                </ul>
+
                 <Map restaurants={this.state.restaurants}/>
             </div>
         )

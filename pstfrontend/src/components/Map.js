@@ -38,15 +38,13 @@ const options = {
 
 
 
-function Map(props) {
+export default function Map(props) {
   const {isLoaded, loadError} = useLoadScript({
       googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
       libraries,
-  })
-
-const [selected, setSelected] = React.useState(null);
-
-const mapRef = React.useRef();
+   })
+  const [selected, setSelected] = React.useState(null);
+  const mapRef = React.useRef();
 
 const onMapLoad = React.useCallback((map) => {
     mapRef.current = map;
@@ -66,30 +64,27 @@ const onMapLoad = React.useCallback((map) => {
         options={options}
         onLoad={onMapLoad}
         >
-
             {/* map through locations here also add onclick outside to show modal */}
-            <Marker
-            key={1}
-            position={{ lat: 29.701770, lng: -95.359890 }}
-            icon={{
-                url: 'https://www.pngkey.com/png/full/340-3401563_1-pepperoni-slice-pizza.png',
-                scaledSize: new window.google.maps.Size(30,30)
-            }}
-            onClick={() => {
-                setSelected("heyyy")
-            }}
-            />
+            {props.restaurants.map((marker) => (
+                <Marker
+                    key={`${marker.lat}-${marker.lng}`}
+                    position={{ lat: marker.lat, lng: marker.lng }}
+                    icon={{
+                      url: 'https://i1.wp.com/www.internationaldollandteddyshow.com/wp-content/uploads/2019/02/green-check-mark-transparent.jpg?w=300&ssl=1',
+                      scaledSize: new window.google.maps.Size(30,30)
+                      }}
+                    onClick={() => {
+                      setSelected(marker)
+                    }}
+                    />
+            ))}
+
 
             {/* add info window with info here */}
 
     
 
         </GoogleMap>
-    
-
       </div>
-    );
+    )
   }
-  
-  export default Map;
-  
