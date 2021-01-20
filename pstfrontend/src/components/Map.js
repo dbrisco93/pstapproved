@@ -5,7 +5,7 @@ import {
     Marker,
     InfoWindow
 } from '@react-google-maps/api'
-import Mapstyles from './Mapstyles'
+import Mapstyles from '../Mapstyles'
 // import usePlacesAutocomplete, {
 //     getGeocode,
 //     getLatLng,
@@ -20,8 +20,8 @@ import Mapstyles from './Mapstyles'
 const libraries = ['places'];
 
 const mapContainerStyle = {
-    width: '100vw',
-    height: '100vh'
+    width: '70vw',
+    height: '70vh'
 }
 
 const center = {
@@ -38,7 +38,7 @@ const options = {
 
 
 
-function Map() {
+function Map(props) {
   const {isLoaded, loadError} = useLoadScript({
       googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
       libraries,
