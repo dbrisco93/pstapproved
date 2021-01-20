@@ -3,9 +3,10 @@ import {
     GoogleMap,
     useLoadScript,
     Marker,
-    InfoWindow
+    // InfoWindow
 } from '@react-google-maps/api'
 import Mapstyles from '../Mapstyles'
+import '.'
 // import usePlacesAutocomplete, {
 //     getGeocode,
 //     getLatLng,
@@ -20,8 +21,8 @@ import Mapstyles from '../Mapstyles'
 const libraries = ['places'];
 
 const mapContainerStyle = {
-    width: '70vw',
-    height: '70vh'
+    width: '100vw',
+    height: '95vh'
 }
 
 const center = {

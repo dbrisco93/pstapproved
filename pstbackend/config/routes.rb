@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   resources :restaurants, only: [:index, :show]
   resources :foods, only: [:index, :show]
-  post '/login', to 'sessions#create'
+  resources :users
+  resources :likedrestaurants
+  post '/login', to: 'sessions#create'
 
 end

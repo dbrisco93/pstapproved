@@ -1,4 +1,5 @@
 import React from 'react'
+import { withRouter } from 'react-router'
 
 class Login extends React.Component {
     state = {
@@ -7,6 +8,32 @@ class Login extends React.Component {
 
     }
 
+    handleInputChange = (e) => {
+        this.setState({
+            [e.target.name]: e.target.value
+        })
+    }
+
+    // finish submission 
+    handleSubmit = (e) => {
+        e.preventDefault()
+    
+        fetch('http://localhost:3000/login',{
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            user: this.state
+          })
+        }).then(res => res.json())
+        .then(token => {
+            localStorage.setItem('token', token.auth_key)
+            this.props.history.push('/')
+            })
+      }
+
+    //   figure out if there is an error 
     render(){
         return(
             <div className="Login">
@@ -30,4 +57,4 @@ class Login extends React.Component {
 
 }
 
-export default Login
+export default withRouter(Login)

@@ -8,7 +8,12 @@ class UsersController < ApplicationController
         token = JWT.encode(payload, 'PST')
     
         render json: { auth_key: token }, :status => :ok
-      end
+    end
+
+    def index
+        users = Users.all
+        render json: users, except: [:created_at, :updated_at]
+    end
     
       def show
         user = User.find_by(id: params[:id])

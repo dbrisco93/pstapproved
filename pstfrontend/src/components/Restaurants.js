@@ -22,7 +22,7 @@ class Restaurants extends React.Component {
 
                 <ul>
                     {this.state.restaurants.map(restaurant => (
-                        <li>{restaurant.name} <button>❤️</button></li>
+                        <li key={restaurant.id}>{restaurant.name} <button>❤️</button></li>
                     ))}
                 </ul>
 
