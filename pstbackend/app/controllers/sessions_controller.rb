@@ -7,8 +7,11 @@ class SessionsController < ApplicationController
 
             payload = { user_id: @user.id }
             token = JWT.encode(payload,'PST')
-
-            render json: { auth_key: token }, :status => :ok
+            info = { 
+                username: @user.username,
+                name: @user.name,
+            }
+            render json: { auth_key: token, user: info }, :status => :ok
         else
             render json: { :msg => 'User not found'}, :status => :ok
         end

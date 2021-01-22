@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :restaurants, only: [:index, :show]
   resources :foods, only: [:index, :show]
   resources :users
-  resources :likedrestaurants
+  resources :liked_restaurants
   post '/login', to: 'sessions#create'
 
 end

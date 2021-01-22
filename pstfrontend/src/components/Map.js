@@ -6,7 +6,6 @@ import {
     // InfoWindow
 } from '@react-google-maps/api'
 import Mapstyles from '../Mapstyles'
-import '.'
 // import usePlacesAutocomplete, {
 //     getGeocode,
 //     getLatLng,
@@ -22,7 +21,7 @@ const libraries = ['places'];
 
 const mapContainerStyle = {
     width: '100vw',
-    height: '95vh'
+    height: '100vh',
 }
 
 const center = {
@@ -55,7 +54,6 @@ const onMapLoad = React.useCallback((map) => {
 
     return (
       <div className="Map">
-          <h1>PST Checkmates <span role="img" aria-label="check">✅</span></h1> 
 
 
         <GoogleMap

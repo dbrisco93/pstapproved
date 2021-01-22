@@ -34,6 +34,7 @@ const App = () => {
           <Route exact path="/foods" component={() => {
             return <Food />
           }}/>
+
         </Switch>
       </Router>
     </div>

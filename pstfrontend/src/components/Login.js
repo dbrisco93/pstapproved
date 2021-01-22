@@ -14,7 +14,6 @@ class Login extends React.Component {
         })
     }
 
-    // finish submission 
     handleSubmit = (e) => {
         e.preventDefault()
     
