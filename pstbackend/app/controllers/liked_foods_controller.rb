@@ -1,13 +1,12 @@
-class LikedRestaurantsController < ApplicationController
-
+class LikedFoodsController < ApplicationController
     before_action :find_liked_restaurant, only: [:destroy]
 
     def create
-        @liked_restaurant = LikedRestaurant.new(liked_restaurant_params)
-        @liked_restaurant.user = current_user
+        @liked_food = LikedFood.new(liked_food_params)
+        @liked_food.user = current_user
 
-        if @liked_restaurant.save
-            render json: @liked_restaurant
+        if @liked_food.save
+            render json: @liked_food
         else
             render json: { msg: "Cannot like item"}, :status => :bad_request
         end
@@ -15,8 +14,8 @@ class LikedRestaurantsController < ApplicationController
 
     def index
         if current_user
-            @liked_restaurants = LikedRestaurant.all
-            render :json => @liked_restaurants.as_json(
+            @liked_foods = LikedFood.all
+            render :json => @liked_foods.as_json(
                 include: [:user]
             ), :status => :ok
         else
@@ -26,8 +25,8 @@ class LikedRestaurantsController < ApplicationController
     end
 
     def destroy
-        if @liked_restaurant.user == current_user
-            @liked_restaurant.destroy
+        if @liked_food.user == current_user
+            @liked_food.destroy
             render :json => { :msg => "Disliked" }, :status => :ok
         else
             render :json => { :msg => "must be logged in" }, :status => :ok
@@ -37,13 +36,12 @@ class LikedRestaurantsController < ApplicationController
 
 
     private
-    def liked_restaurant_params
-        params.require(:liked_restaurant).permit(:user_id, :restaurant_id)
+    def liked_food_params
+        params.require(:liked_food).permit(:user_id, :food_id)
     end
 
     def find_liked_restaurant
-        @liked_restaurant = LikedRestaurant.find_by(id: params[:id])
+        @liked_food = LikedFood.find_by(id: params[:id])
     end
-
 
 end

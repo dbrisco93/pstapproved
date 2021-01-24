@@ -39,7 +39,7 @@ class Restaurants extends React.Component {
         return (
             <div className="Restaurants">
 
-                <RestaurantContainer restaurants={this.state.restaurants} likeRestaurant={this.likeRestaurant} />
+                <RestaurantContainer restaurants={this.state.restaurants} likeRestaurant={this.likeRestaurant} liked={this.state.isLiked}/>
                 <Map restaurants={this.state.restaurants}/>
             </div>
         )
