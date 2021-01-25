@@ -1,32 +1,25 @@
 class LikedRestaurantsController < ApplicationController
 
     before_action :find_liked_restaurant, only: [:destroy]
+    before_action :authenticate!, only: [:create, :destroy]
 
     def create
         @liked_restaurant = LikedRestaurant.new(liked_restaurant_params)
-        @liked_restaurant.user = current_user
-
+        @liked_restaurant.user_id = current_user.id
         if @liked_restaurant.save
-            render json: @liked_restaurant
+            render json: @liked_restaurant, include: [:user, :restaurant]
         else
             render json: { msg: "Cannot like item"}, :status => :bad_request
         end
     end
 
     def index
-        if current_user
-            @liked_restaurants = LikedRestaurant.all
-            render :json => @liked_restaurants.as_json(
-                include: [:user]
-            ), :status => :ok
-        else
-            render :json => { :msg => "Not logged in" }
-        end
-
+        @liked_restaurants = LikedRestaurant.all
+        render json: @liked_restaurants, except: [:created_at, :updated_at]
     end
 
     def destroy
-        if @liked_restaurant.user == current_user
+        if @liked_restaurant.user_id == current_user.id
             @liked_restaurant.destroy
             render :json => { :msg => "Disliked" }, :status => :ok
         else

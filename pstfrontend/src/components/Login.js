@@ -16,22 +16,32 @@ class Login extends React.Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
-    
+        const newUser = {
+            username: this.state.username,
+            password: this.state.password
+        }
         fetch('http://localhost:3000/login',{
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify({
-            user: this.state
-          })
+          body: JSON.stringify(newUser)
         }).then(res => res.json())
         .then(token => {
-            localStorage.setItem('token', token.auth_key)
+            localStorage.setItem('auth_key',token['auth_key'])
+            this.props.handleLogin()
             this.props.history.push('/')
-            })
+        })
+
       }
 
+
+                  // {
+                
+            // localStorage.setItem('auth_key', token['auth_key'])
+            // this.props.handleLogin()
+            // this.props.history.push('/')
+            // })
     //   figure out if there is an error 
     render(){
         return(

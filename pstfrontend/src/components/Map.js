@@ -43,7 +43,7 @@ export default function Map(props) {
       googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
       libraries,
    })
-  const [selected, setSelected] = React.useState(null);
+  // const [selected, setSelected] = React.useState(null);
   const mapRef = React.useRef();
 
 const onMapLoad = React.useCallback((map) => {
@@ -73,7 +73,7 @@ const onMapLoad = React.useCallback((map) => {
                       scaledSize: new window.google.maps.Size(30,30)
                       }}
                     onClick={() => {
-                      setSelected(marker)
+                      // setSelected(marker)
                     }}
                     />
             ))}

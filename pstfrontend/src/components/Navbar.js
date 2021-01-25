@@ -1,39 +1,54 @@
 import '../App.css'
-import React, { Component } from 'react'
+import React from 'react'
 import { NavLink } from 'react-router-dom'
+import { Icon } from 'semantic-ui-react'
 
-class Navbar extends React.Component {
-
-
-    render() {
-        
-        return (
-            <div className="navigation">
-
-                <span className="home-link">
-                    <NavLink exact to='/' activeClassName='toplink'>Home</NavLink>
-                </span>
-
-                <span className="restaurants-link">
-                    <NavLink exact to='/restaurants' activeClassName='toplink'>Restaurants</NavLink>
-                </span>
-                <span className="food-link">
-                    <NavLink exact to='/foods' activeClassName='toplink'>Foods</NavLink>
-                </span>
-                <span className="login-link">
-                    <NavLink exact to='/login' activeClassName='toplink'>Login</NavLink>
-                </span>
-                <span className="signup-link">
-                    <NavLink exact to='/signup' activeClassName='toplink'>Signup</NavLink>
-                </span>
-                <span className="profile-link">
-                    <NavLink exact to='/profile' activeClassName='toplink'>Profile</NavLink>
-                </span>
-
-
+const handleLoginRender = (isLoggedIn) => {
+    if(isLoggedIn){
+      return (
+          <div className="dropdown">
+            <button className="dropbtn">Checkmate Corner
+            <Icon name="dropdown"/>
+            </button>
+            <div className="dropdown-content">
+            <NavLink to="/profile">Profile</NavLink>
+            <NavLink to="/logout">Logout</NavLink>
             </div>
-        )
+          </div>
+
+      )
+    }else{
+      return(
+        <div className="dropdown">
+            <button className="dropbtn">Checkmate Signin
+            <Icon name="dropdown"/>
+            </button>
+            <div className="dropdown-content">
+            <NavLink to="/login">Login</NavLink>
+            <NavLink to="/signup">Signup</NavLink>
+            </div>
+        </div>
+
+        
+      )
     }
+}
+
+const Navbar = (props) => {
+
+        
+    return (
+        <div className="navigation">
+            <NavLink exact to='/' activeClassName='toplink'>Home</NavLink>
+            <NavLink exact to='/restaurants' activeClassName='toplink'>Restaurants</NavLink>
+            <NavLink exact to='/foods' activeClassName='toplink'>Foods</NavLink>
+            {
+                handleLoginRender(props.isLoggedIn)
+            }
+        </div>
+
+
+        )
 }
 
 export default Navbar

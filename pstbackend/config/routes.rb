@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :foods, only: [:index, :show]
   resources :users
   resources :liked_restaurants
+  resources :liked_foods
   post '/login', to: 'sessions#create'
 
 end

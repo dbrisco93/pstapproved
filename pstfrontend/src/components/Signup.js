@@ -17,19 +17,26 @@ class Signup extends React.Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
+        const newUser = {
+            username: this.state.username,
+            name: this.state.name,
+            password: this.state.password,
+            email: this.state.email
+        }
     
         fetch('http://localhost:3000/users',{
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify({
-            user: this.state
-          })
+          body: JSON.stringify(newUser)
         }).then(res => res.json())
         .then(token => {
-            localStorage.setItem('token', token.auth_key)
-            this.props.history.push('/restaurants')
+            console.log(token)
+            console.log(token['auth_key'])
+            localStorage.setItem('auth_key', token['auth_key'])
+            this.props.handleLogin()
+            this.props.history.push('/')
             })
       }
 

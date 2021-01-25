@@ -8,7 +8,6 @@ class Restaurants extends React.Component {
 
     state = {
         restaurants: [],
-        isLiked: false
     }
 
     componentDidMount(){
@@ -17,30 +16,20 @@ class Restaurants extends React.Component {
         .then(restaurants => this.setState({ restaurants }))
     }
 
-    likeRestaurant = (restaurant) => {
-        fetch(`http://localhost:3000/liked_restaurants`,{
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json',
-                'auth-key': localStorage.getItem('token')
-            },
-            body: JSON.stringify({
-                restaurant_id: restaurant.id,
-                user_id: 1
-            })
-        }).then(res => res.json())
-        .then(data => {
-            console.log(data)})
-    }
-
-
 
     render() {
         return (
             <div className="Restaurants">
 
-                <RestaurantContainer restaurants={this.state.restaurants} likeRestaurant={this.likeRestaurant} liked={this.state.isLiked}/>
-                <Map restaurants={this.state.restaurants}/>
+                <RestaurantContainer 
+                restaurants={this.state.restaurants} 
+                isLoggedIn={this.props.isLoggedIn}
+                likedRestaurants={this.props.likedRestaurants}
+                likeRestaurant={this.props.likeRestaurant}/>
+
+                <Map 
+                restaurants={this.state.restaurants}
+                loggedIn={this.props.isLoggedIn}/>
             </div>
         )
     }

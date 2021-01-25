@@ -1,4 +1,7 @@
 class Restaurant < ApplicationRecord
-    has_many :restaurantfoods
-    has_many :foods, :through => :restaurantfoods
+    has_many :restaurant_foods
+    has_many :foods, :through => :restaurant_foods
+
+    has_many :liked_restaurants
+    has_many :users, :through => :liked_restaurants
 end

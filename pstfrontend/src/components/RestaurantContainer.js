@@ -1,15 +1,16 @@
 import '../App.css'
-import { Button, Icon } from 'semantic-ui-react'
+import RestaurantCard from '../components/RestaurantCard'
 
 const RestaurantContainer = (props) => {
     return (
       <div className="RestaurantContainer">
           <ol>
               {props.restaurants.map((restaurant) => (
-                  <li key={restaurant.id}>{restaurant.name} 
-                  <Button icon onClick={props.likeRestaurant}>
-                  <Icon name='heart outline' onClick={props.likeRestaurant(restaurant)}/>
-                  </Button>
+                  <li key={restaurant.id}>
+                      <RestaurantCard 
+                        restaurant={restaurant}
+                          isLoggedIn={props.isLoggedIn}
+                          likeRestaurant={props.likeRestaurant} />
                   </li>
               ))}
           </ol>

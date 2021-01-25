@@ -2,13 +2,19 @@ class ApplicationController < ActionController::API
   
   
   def current_user
-        token = request.headers['auth-key']
+        token = request.headers['Auth-Key']
         begin
-          payload = JWT.decode(token,'PST',true)
-          @user = User.find_by(id: payload[0]['user_id'])
+          user_id = JWT.decode(token,'PST')[0]['user_id']
+          @user = User.find_by(id: user_id)
         rescue JWT::VerificationError
           nil
         end
-    
   end
+
+  def authenticate!
+    unless current_user
+      nil
+    end
+  end 
+
 end

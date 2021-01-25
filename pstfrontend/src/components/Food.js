@@ -1,5 +1,6 @@
 import '../App.css';
 import React from 'react'
+import FoodCard from '../components/FoodCard'
 
 class Food extends React.Component {
     state = {
@@ -13,9 +14,16 @@ class Food extends React.Component {
         }
 
     render() {
+        const foods = this.state.foods
         return (
+            
             <div className="Food">
-                Some information about the foods up here and then
+               {foods.map((food) => 
+               <FoodCard 
+               food={food} 
+               isLoggedIn={this.props.isLoggedIn}
+               likeFood={this.props.likeFood}
+               />)}
                 
             </div>
         )

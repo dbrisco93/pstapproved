@@ -9,15 +9,11 @@ end
   
   
   def create
-        @user = User.new(user_params)
-        if @user.valid?
-        @user.save
-    
-        payload = { user_id: @user.id }
-        token = JWT.encode(payload, 'PST')
-    
-        render json: { auth_key: token }, :status => :ok
-
+        @user = User.create!(user_params)
+        if @user.valid?    
+          payload = { user_id: @user.id }
+          token = JWT.encode(payload,'PST')    
+          render json: { auth_key: token }, :status => :ok
         else
           render json: { :msg => "Not a valid user"}
         end
