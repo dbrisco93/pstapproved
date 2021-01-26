@@ -55,7 +55,7 @@ div.dropdown {
   background-color: inherit;
   min-width: 80px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
+  z-index: 9999;
 }
 
 .dropdown-content a {
@@ -67,6 +67,7 @@ div.dropdown {
 
 .dropdown:hover .dropdown-content {
   display: block;
+  z-index: 9999;
 }
 
 
@@ -75,7 +76,7 @@ div.dropdown {
 
 /* Main Divs  */
 
-div.Main, div.Login, div.Signup, div.Restaurants, div.Food, div.Profile {
+div.Main, div.Login, div.Signup, div.Food, div.Profile {
   width: 100vw;
   height: 100vh;
   margin-top: 60px;
@@ -86,15 +87,92 @@ div.Main, div.Login, div.Signup, div.Restaurants, div.Food, div.Profile {
   /* overflow: scroll; */
 }
 
+/* Login Form */
+
+div.form {
+  position: relative;
+  z-index: 1;
+  background: #FFFFFF;
+  max-width: 360px;
+  margin: 0 auto 100px;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+.field{
+  font-family: 'Ubuntu', sans-serif;
+  outline: 0;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+
+}
+.label {
+  font-family: 'Permanent Marker', cursive;
+  font-size: 14px;
+}
+
+.button {
+  font-family: 'Permanent Marker', cursive;
+  outline: 0;
+  background: #ffde59;
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  color: black;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+}
+
+.message {
+  margin: 15px 0 0;
+  color: black;
+  font-size: 12px;
+}
+
+
+.errors {
+  padding: 2px;
+  color: black;
+  font-style: oblique;
+  font-size: 12px;
+}
+
+
+
+.form a {
+  color: red;
+}
+
+.form a:hover {
+  color: black;
+}
+
+
+div.Restaurants {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  margin-top: 60px;
+  font-family: 'Ubuntu', sans-serif;
+  background: white;
+}
+
 div.Profile h2 {
   font-family: 'Permanent Marker', 'cursive';
 }
 
 /* Map Container */ 
 
-div.Map {
+/* div.Map {
   overflow: scroll;
-}
+} */
 
 
 /* Restaurant Container */
@@ -104,4 +182,10 @@ div.Map {
   outline: none;
   background-color: inherit;
   margin: 0;
+}
+
+div.RestaurantContainer {
+  flex: 50%;
+  overflow: scroll;
+  /* z-index: 0; */
 }

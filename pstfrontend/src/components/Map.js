@@ -25,8 +25,8 @@ const mapContainerStyle = {
 }
 
 const center = {
-    lat: 29.751579,
-    lng: -95.361273
+    lat: 29.81242,
+    lng: -95.37398
 }
 
 const options = {
@@ -53,12 +53,12 @@ const onMapLoad = React.useCallback((map) => {
   if (!isLoaded) return "Maps Loaded";
 
     return (
-      <div className="Map">
+      <div className="RestaurantContainer">
 
 
         <GoogleMap
         mapContainerStyle={mapContainerStyle}
-        zoom={12}
+        zoom={8}
         center={center}
         options={options}
         onLoad={onMapLoad}
@@ -68,10 +68,10 @@ const onMapLoad = React.useCallback((map) => {
                 <Marker
                     key={`${marker.lat}-${marker.lng}`}
                     position={{ lat: marker.lat, lng: marker.lng }}
-                    icon={{
-                      url: 'https://i1.wp.com/www.internationaldollandteddyshow.com/wp-content/uploads/2019/02/green-check-mark-transparent.jpg?w=300&ssl=1',
-                      scaledSize: new window.google.maps.Size(30,30)
-                      }}
+                    // icon={{
+                    //   url: {check},
+                    //   scaledSize: new window.google.maps.Size(30,30)
+                    //   }}
                     onClick={() => {
                       // setSelected(marker)
                     }}

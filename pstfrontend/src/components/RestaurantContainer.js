@@ -10,7 +10,8 @@ const RestaurantContainer = (props) => {
                       <RestaurantCard 
                         restaurant={restaurant}
                           isLoggedIn={props.isLoggedIn}
-                          likeRestaurant={props.likeRestaurant} />
+                          likeRestaurant={props.likeRestaurant}
+                          likedRestaurants={props.likedRestaurants} />
                   </li>
               ))}
           </ol>

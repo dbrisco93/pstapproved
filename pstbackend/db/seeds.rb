@@ -49,6 +49,6 @@ f24 = Food.create(name: 'Spicy Honey Garlic Surf & Turf Hoagie', img_url: '21.pn
 f25 = Food.create(name: 'Brunch Burger', img_url: '22.png')
 
 
-
+rf1 = RestaurantFood.create(food_id: 1, restaurant_id: 45)
 
 

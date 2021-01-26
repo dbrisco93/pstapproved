@@ -1,11 +1,12 @@
 import React from 'react'
 import { withRouter } from 'react-router'
+import { NavLink } from 'react-router-dom'
 
 class Login extends React.Component {
     state = {
         username: '',
         password: '',
-
+        message: ''
     }
 
     handleInputChange = (e) => {
@@ -20,6 +21,7 @@ class Login extends React.Component {
             username: this.state.username,
             password: this.state.password
         }
+
         fetch('http://localhost:3000/login',{
           method: 'POST',
           headers: {
@@ -27,39 +29,65 @@ class Login extends React.Component {
           },
           body: JSON.stringify(newUser)
         }).then(res => res.json())
-        .then(token => {
-            localStorage.setItem('auth_key',token['auth_key'])
-            this.props.handleLogin()
-            this.props.history.push('/')
-        })
+        .then(data => {
+            if(!data.msg){
+                localStorage.setItem('auth_key',data['auth_key'])
+                this.props.handleLogin()
+                this.props.history.push('/')
+            }
+            else{
+                this.setState(
+                    {message: data.msg, 
+                    errors: 'true',
+                    username: '',
+                    password: ''  
+                })
+            }
 
+        })
       }
 
 
-                  // {
-                
-            // localStorage.setItem('auth_key', token['auth_key'])
-            // this.props.handleLogin()
-            // this.props.history.push('/')
-            // })
-    //   figure out if there is an error 
+ 
     render(){
         return(
             <div className="Login">
-                <form onSubmit={this.handleSubmit}>
-     
-                    <label>
-                        Username:
-                    </label>
-                    <input id="username" type="text" name="username" onChange={this.handleInputChange} value={this.state.username}/>
-                    <label>
-                        Password:
-                    </label>
-                    <input id="password" type="password" name="password" onChange={this.handleInputChange} value={this.state.password} />
+                <div className="form">
+                    <form onSubmit={this.handleSubmit} className="register-form">
 
-                    <input type="submit" value="Login" />
-                    
-                </form>
+                        <label className="label">
+                            Username:
+                        </label>
+                        <input id="username" 
+                            type="text" 
+                            name="username" 
+                            onChange={this.handleInputChange} 
+                            value={this.state.username}
+                            className="field"/>
+                        <label className="label">
+                            Password:
+                        </label>
+                        <input id="password" 
+                            type="password" 
+                            name="password" 
+                            onChange={this.handleInputChange} 
+                            value={this.state.password} 
+                            className="field"/>
+
+                        {
+                            this.state.errors === "true" ?
+                            <p className="errors">{this.state.message}</p>
+                            : ""
+                        }
+
+                        <input type="submit" value="Login" className="button"/>
+                        <p className="message">Not registered? <NavLink to="/signup">Create an account</NavLink></p>
+
+     
+                     </form>
+
+                </div>
+       
             </div>
         )
     }
