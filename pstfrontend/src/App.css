@@ -71,9 +71,6 @@ div.dropdown {
 }
 
 
-
-
-
 /* Main Divs  */
 
 div.Main, div.Login, div.Signup, div.Food, div.Profile {
@@ -111,6 +108,7 @@ div.form {
   font-size: 14px;
 
 }
+
 .label {
   font-family: 'Permanent Marker', cursive;
   font-size: 14px;
@@ -143,8 +141,6 @@ div.form {
   font-style: oblique;
   font-size: 12px;
 }
-
-
 
 .form a {
   color: red;
