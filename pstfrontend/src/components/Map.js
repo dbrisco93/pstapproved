@@ -20,7 +20,7 @@ import Mapstyles from '../Mapstyles'
 const libraries = ['places'];
 
 const mapContainerStyle = {
-    width: '100vw',
+    width: '50vw',
     height: '100vh',
 }
 
@@ -43,7 +43,7 @@ export default function Map(props) {
       googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
       libraries,
    })
-  // const [selected, setSelected] = React.useState(null);
+  const [selected, setSelected] = React.useState(null);
   const mapRef = React.useRef();
 
 const onMapLoad = React.useCallback((map) => {
@@ -58,7 +58,7 @@ const onMapLoad = React.useCallback((map) => {
 
         <GoogleMap
         mapContainerStyle={mapContainerStyle}
-        zoom={8}
+        zoom={10}
         center={center}
         options={options}
         onLoad={onMapLoad}
@@ -68,12 +68,8 @@ const onMapLoad = React.useCallback((map) => {
                 <Marker
                     key={`${marker.lat}-${marker.lng}`}
                     position={{ lat: marker.lat, lng: marker.lng }}
-                    // icon={{
-                    //   url: {check},
-                    //   scaledSize: new window.google.maps.Size(30,30)
-                    //   }}
                     onClick={() => {
-                      // setSelected(marker)
+                      setSelected(marker);
                     }}
                     />
             ))}

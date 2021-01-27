@@ -2,6 +2,7 @@ import '../App.css'
 import RestaurantCard from '../components/RestaurantCard'
 
 const RestaurantContainer = (props) => {
+    console.log(props.restaurants)
     return (
       <div className="RestaurantContainer">
           <ol>

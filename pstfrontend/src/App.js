@@ -20,23 +20,45 @@ class App extends Component {
     isLoggedIn: false,
     likedRestaurants: [],
     likedFoods: [],
+    name: '',
+    username: '',
+    restaurants: [],
+    foods: []
   }
 
   componentDidMount(){
+    // if(localStorage.getItem('auth_key')){
+    //   this.setState({ isLoggedIn: true })
+    // }
+    Promise.all([
+      fetch('http://localhost:3000/restaurants'),
+      fetch('http://localhost:3000/foods')
+    ])
+    .then(([res1, res2]) => Promise.all([res1.json(), res2.json()]))
+    .then(([restaurants, foods]) => this.setState({
+      restaurants,
+      foods
+    }))
+  }
+
+  handleLogin = (data) => {
     if(localStorage.getItem('auth_key')){
-      this.setState({ isLoggedIn: true })
+      this.setState({ 
+        isLoggedIn: true,
+        likedFoods: data.info.liked_foods,
+        likedRestaurants: data.info.liked_restaurants,
+        username: data.info.username,
+        name: data.info.name
+      })
+      console.log(this.state)
+
     }
   }
 
-  handleLogin = () => {
-    if(localStorage.getItem('auth_key')){
-      this.setState({ isLoggedIn: true})
-    }
-  }
 
+ 
 
   likeRestaurant = (newRestaurant) => {
-    
     fetch('http://localhost:3000/liked_restaurants',{
       method: "POST",
       headers: {
@@ -46,14 +68,12 @@ class App extends Component {
       body: JSON.stringify({restaurant_id: newRestaurant.id})
     })
     .then(res => res.json())
-    .then(addRestaurant => {
-      if(!addRestaurant.msg){
-        const newRestaurantList = [...this.state.likedRestaurants, addRestaurant]
-        this.setState({ likedRestaurants: newRestaurantList })
-      }
-    })
+    .then(restaurant => {
+      const newRestaurantsList = [...this.state.likedRestaurants, restaurant.restaurant]
+      this.setState({ likedRestaurants: newRestaurantsList })
+    }
+    )
   }
-
 
   likeFood = (newFood) => {
     
@@ -66,16 +86,16 @@ class App extends Component {
       body: JSON.stringify({food_id: newFood.id})
     })
     .then(res => res.json())
-    .then(addFood => {
-      if(!addFood.msg){
-        const newFoodList = [...this.state.likedFoods, addFood]
-        this.setState({ likedFoods: newFoodList })
-      }
-    })
+    .then(food => {
+      const newFoodsList = [...this.state.likedFoods, food.food]
+      this.setState({ likedFoods: newFoodsList })
+    }
+    )
   }
 
-  render(){
 
+
+  render(){
     return (
       <Router>
         <Navbar 
@@ -99,7 +119,8 @@ class App extends Component {
             }}/>
 
             <Route exact path="/restaurants" component={() => {
-              return <Restaurants 
+              return <Restaurants
+              restaurants={this.state.restaurants}
               isLoggedIn={this.state.isLoggedIn} 
               likedRestaurants={this.state.likedRestaurants} 
               likeRestaurant={this.likeRestaurant}/>
@@ -107,6 +128,7 @@ class App extends Component {
 
             <Route exact path="/foods" component={() => {
               return <Food 
+              foods={this.state.foods}
               isLoggedIn={this.state.isLoggedIn} 
               likedFoods={this.state.likedFoods}
               likeFood={this.likeFood} />
@@ -115,15 +137,20 @@ class App extends Component {
             <Route exact path="/logout" component={() => {
               localStorage.clear()
               this.setState({ isLoggedIn: false, 
-                likedRestaurants: [], 
-                likedFoods: [] })
+              likedRestaurants: [], 
+              likedFoods: [],
+              name: '',
+              username: ''
+              })
               return <Redirect to="/" />
             }}/>
 
             <Route exact path="/profile" component={() => {
               return <Profile 
               likedRestaurants={this.state.likedRestaurants} 
-              likedFoods={this.state.likedFoods}/>
+              likedFoods={this.state.likedFoods}
+              name={this.state.name}
+              username={this.state.username}/>
             }} /> 
 
         </Switch>

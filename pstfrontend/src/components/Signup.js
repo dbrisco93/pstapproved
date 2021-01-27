@@ -6,7 +6,13 @@ class Signup extends React.Component {
         name: '',
         username: '',
         password: '',
-        email: ''
+        email: '',
+        name_error: '',
+        name_has_error: false,
+        username_error: '',
+        username_has_error: false,
+        email_error: '',
+        email_has_error: ''
     }
 
     handleInputChange = (e) => {
@@ -31,13 +37,19 @@ class Signup extends React.Component {
           },
           body: JSON.stringify(newUser)
         }).then(res => res.json())
-        .then(token => {
-            console.log(token)
-            console.log(token['auth_key'])
-            localStorage.setItem('auth_key', token['auth_key'])
-            this.props.handleLogin()
-            this.props.history.push('/')
-            })
+        .then(data => {
+            debugger;
+            if(!data.msg){
+                localStorage.setItem('auth_key',data['auth_key'])
+                this.props.handleLogin()
+                this.props.history.push('/')
+            }
+            else{
+                console.log(data.msg)
+                console.log(newUser)
+            }
+        })
+
       }
 
     render(){

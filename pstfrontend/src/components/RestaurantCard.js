@@ -6,14 +6,13 @@ const RestaurantCard = props => {
         return (
         <>
         {props.restaurant.name}
-        
         {
-        props.likedRestaurants.filter(restaurant => restaurant.id !== props.restaurant.id)
+        props.likedRestaurants.includes(props.restaurant)
         ?
+        <button className="likebtn"><Icon name="bookmark" /></button>
+        :
         <button className="likebtn" onClick={()=> props.likeRestaurant(props.restaurant)}>
         <Icon name="bookmark outline" /></button>
-        :
-        <button className="likebtn"><Icon name="bookmark" /></button>
         }
         </>
     )

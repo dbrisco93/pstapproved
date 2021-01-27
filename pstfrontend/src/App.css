@@ -31,7 +31,7 @@ div.navigation a {
 div.dropdown {
   position: relative;
   display: inline-block;
-  float: right;
+  float: left;
 }
 
 .dropbtn {
@@ -55,7 +55,6 @@ div.dropdown {
   background-color: inherit;
   min-width: 80px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 9999;
 }
 
 .dropdown-content a {
@@ -67,7 +66,6 @@ div.dropdown {
 
 .dropdown:hover .dropdown-content {
   display: block;
-  z-index: 9999;
 }
 
 
@@ -91,6 +89,7 @@ div.form {
   z-index: 1;
   background: #FFFFFF;
   max-width: 360px;
+  padding: 10px;
   margin: 0 auto 100px;
   text-align: center;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
@@ -100,32 +99,36 @@ div.form {
   font-family: 'Ubuntu', sans-serif;
   outline: 0;
   background: #f2f2f2;
-  width: 100%;
+  width: 75%;
   border: 0;
   margin: 0 0 15px;
   padding: 15px;
   box-sizing: border-box;
   font-size: 14px;
+  border-radius: 25px;
+  text-align: center;
 
 }
 
 .label {
   font-family: 'Permanent Marker', cursive;
-  font-size: 14px;
+  font-size: 18px;
+  margin-bottom: 30px;
 }
 
 .button {
   font-family: 'Permanent Marker', cursive;
   outline: 0;
   background: #ffde59;
-  width: 100%;
+  width: 75%;
   border: 0;
   padding: 15px;
   color: black;
-  font-size: 14px;
+  font-size: 18px;
   -webkit-transition: all 0.3 ease;
   transition: all 0.3 ease;
   cursor: pointer;
+  border-radius: 25px;
 }
 
 .message {
@@ -183,5 +186,4 @@ div.Profile h2 {
 div.RestaurantContainer {
   flex: 50%;
   overflow: scroll;
-  /* z-index: 0; */
 }

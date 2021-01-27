@@ -32,7 +32,7 @@ class Login extends React.Component {
         .then(data => {
             if(!data.msg){
                 localStorage.setItem('auth_key',data['auth_key'])
-                this.props.handleLogin()
+                this.props.handleLogin(data)
                 this.props.history.push('/')
             }
             else{
@@ -58,15 +58,18 @@ class Login extends React.Component {
                         <label className="label">
                             Username:
                         </label>
+                        <br></br>
                         <input id="username" 
                             type="text" 
                             name="username" 
                             onChange={this.handleInputChange} 
                             value={this.state.username}
                             className="field"/>
+                            <br></br>
                         <label className="label">
                             Password:
                         </label>
+                        <br></br>
                         <input id="password" 
                             type="password" 
                             name="password" 
