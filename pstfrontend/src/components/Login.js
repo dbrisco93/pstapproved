@@ -11,7 +11,8 @@ class Login extends React.Component {
 
     handleInputChange = (e) => {
         this.setState({
-            [e.target.name]: e.target.value
+            [e.target.name]: e.target.value,
+            message: ''
         })
     }
 
@@ -84,7 +85,7 @@ class Login extends React.Component {
                         }
 
                         <input type="submit" value="Login" className="button"/>
-                        <p className="message">Not registered? <NavLink to="/signup">Create an account</NavLink></p>
+                        <p className="message">Not registered? <NavLink to="/signup">Become a Checkmate</NavLink></p>
 
      
                      </form>

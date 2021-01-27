@@ -2,19 +2,29 @@ import '../App.css'
 import { Icon } from 'semantic-ui-react'
 
 const RestaurantCard = props => {
+
+  
+
     if(props.isLoggedIn){
+        let likedRestaurants = props.likedRestaurants.map(restaurant => restaurant.name)
         return (
+
         <>
         {props.restaurant.name}
+        {/* {props.restaurant.address} */}
         {
-        props.likedRestaurants.includes(props.restaurant)
-        ?
-        <button className="likebtn"><Icon name="bookmark" /></button>
-        :
-        <button className="likebtn" onClick={()=> props.likeRestaurant(props.restaurant)}>
-        <Icon name="bookmark outline" /></button>
+            likedRestaurants.includes(props.restaurant.name)
+            ?
+            <button className="likebtn">
+                <Icon name="bookmark" />    
+            </button>
+            :
+            <button className="likebtn" onClick={() => props.likeRestaurant(props.restaurant)}>
+                <Icon name="bookmark outline" />
+            </button>
         }
         </>
+
     )
     }else{
         return(

@@ -46,7 +46,11 @@ div.dropdown {
 }
 
 .navigation a:hover, .dropdown:hover .dropbtn {
-  background-color: #ffde59;
+  /* background-color: #ffde59; */
+  background-color: inherit;
+  /* color: #ffde59; */
+  text-shadow: 2px 2px 8px rgb(180, 180, 180);
+
 }
 
 .dropdown-content {
@@ -78,13 +82,23 @@ div.Main, div.Login, div.Signup, div.Food, div.Profile {
   background: white;
   text-align: center;
   font-family: 'Ubuntu', sans-serif;
-
-  /* overflow: scroll; */
+  background-image: linear-gradient(180deg, white, #ffde59);
+  overflow: scroll;
 }
+
+/* div.Main {
+  width: 100vw;
+  height: 100vh;
+  margin-top: 60px;
+  text-align: center;
+  font-family: 'Ubuntu', sans-serif;
+
+} */
 
 /* Login Form */
 
 div.form {
+  top: 12%;
   position: relative;
   z-index: 1;
   background: #FFFFFF;
@@ -134,15 +148,16 @@ div.form {
 .message {
   margin: 15px 0 0;
   color: black;
-  font-size: 12px;
+  font-size: 16px;
+
 }
 
 
 .errors {
-  padding: 2px;
+  padding: 1px;
   color: black;
   font-style: oblique;
-  font-size: 12px;
+  font-size: 16px;
 }
 
 .form a {
@@ -176,7 +191,7 @@ div.Profile h2 {
 
 /* Restaurant Container */
 
-.likebtn {
+.likebtn, .igButton {
   border:none;
   outline: none;
   background-color: inherit;
@@ -186,4 +201,5 @@ div.Profile h2 {
 div.RestaurantContainer {
   flex: 50%;
   overflow: scroll;
+  /* position: relative; */
 }

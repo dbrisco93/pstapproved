@@ -1,7 +1,8 @@
 class FoodsController < ApplicationController
     def index
-        foods = Food.all
-        render json: foods, except: [:created_at, :updated_at]
+        @foods = Food.all
+        render json: @foods, except: [:created_at, :updated_at], include: [:restaurant_foods, :liked_foods, :restaurants]
+
     end
 
     def show

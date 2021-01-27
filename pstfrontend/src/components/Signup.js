@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 import { withRouter } from 'react-router'
 
 class Signup extends React.Component {
@@ -39,9 +40,9 @@ class Signup extends React.Component {
         }).then(res => res.json())
         .then(data => {
             debugger;
-            if(!data.msg){
+              if(!data.msg){
                 localStorage.setItem('auth_key',data['auth_key'])
-                this.props.handleLogin()
+                this.props.handleSignup(data)
                 this.props.history.push('/')
             }
             else{
@@ -55,21 +56,61 @@ class Signup extends React.Component {
     render(){
         return(
             <div className="Signup">
+                <div className="form">
                 <form onSubmit={this.handleSubmit}>
-                    <label>Name:</label>
-                    <input id="name" type="text" name="name" onChange={this.handleInputChange} value={this.state.name}/>
+                    <label className="label">Name:</label>
+                    <br></br>
+                    <input 
+                    id="name" 
+                    type="text" 
+                    name="name" 
+                    onChange={this.handleInputChange} 
+                    value={this.state.name}
+                    className="field"/>
+                    <br></br>
+                    <label className="label">Username:</label>
+                    <br></br>
+                    <input 
+                    id="username" 
+                    type="text" 
+                    name="username" 
+                    onChange={this.handleInputChange} 
+                    value={this.state.username}
+                    className="field"/>
+                    <br></br>
                     
-                    <label>Username:</label>
-                    <input id="username" type="text" name="username" onChange={this.handleInputChange} value={this.state.username}/>
+                    <label className="label">Email:</label>
+                    <br></br>
+                    <input 
+                    id="email" 
+                    type="text" 
+                    name="email" 
+                    onChange={this.handleInputChange} 
+                    value={this.state.email}
+                    className="field"/>
+                    <br></br>
                     
-                    <label>Email:</label>
-                    <input id="email" type="text" name="email" onChange={this.handleInputChange} value={this.state.email}/>
-                    
-                    <label>Password:</label>
-                    <input id="password" type="password" name="password" onChange={this.handleInputChange} value={this.state.password} />
+                    <label className="label">Password:</label>
+                    <br></br>
+                    <input 
+                    id="password" 
+                    type="password" 
+                    name="password" 
+                    onChange={this.handleInputChange} 
+                    value={this.state.password} 
+                    className="field"/>
 
-                    <input type="submit" value="Signup" />
+                    <input 
+                    type="submit" 
+                    value="Signup"  
+                    className="button"/>
+
+                    <p className="message">Already a checkmate?  <NavLink to="/login">Login</NavLink></p>
+
                 </form>
+
+                </div>
+                
             </div>
         )
     }

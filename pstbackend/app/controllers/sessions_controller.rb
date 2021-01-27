@@ -8,8 +8,10 @@ class SessionsController < ApplicationController
             info = { 
                 username: @user.username,
                 name: @user.name,
+                liked_restaurants: @user.restaurants,
+                liked_foods: @user.foods
             }
-            render json: { auth_key: token }, :status => :ok
+            render json: { auth_key: token,  info: info }, :status => :ok
         else
             render json: { :msg => 'User not found'}, :status => :ok
         end

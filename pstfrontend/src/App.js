@@ -55,6 +55,19 @@ class App extends Component {
     }
   }
 
+  handleSignup = (data) => {
+    if(localStorage.getItem('auth_key')){
+      this.setState({ 
+        isLoggedIn: true,
+        likedFoods: data.info.liked_foods,
+        likedRestaurants: data.info.liked_restaurants,
+        username: data.info.username,
+        name: data.info.name
+      })
+      console.log(this.state)
+
+    }
+  }
 
  
 
@@ -115,7 +128,7 @@ class App extends Component {
 
             <Route exact path="/signup" component={() => {
               return <Signup 
-              handleLogin={this.handleLogin} />
+              handleSignup={this.handleSignup} />
             }}/>
 
             <Route exact path="/restaurants" component={() => {

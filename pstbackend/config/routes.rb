@@ -7,5 +7,5 @@ Rails.application.routes.draw do
   resources :liked_restaurants
   resources :liked_foods
   post '/login', to: 'sessions#create'
-
+  get '/profile', to: 'users#show_current_user'
 end
