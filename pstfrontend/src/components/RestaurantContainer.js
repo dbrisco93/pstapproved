@@ -12,7 +12,8 @@ const RestaurantContainer = (props) => {
                         restaurant={restaurant}
                           isLoggedIn={props.isLoggedIn}
                           likeRestaurant={props.likeRestaurant}
-                          likedRestaurants={props.likedRestaurants} />
+                          likedRestaurants={props.likedRestaurants}
+                          dislikeRestaurant={props.dislikeRestaurant} />
                   </li>
               ))}
           </ol>

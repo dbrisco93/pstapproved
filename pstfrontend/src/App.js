@@ -14,6 +14,7 @@ import {
   Switch,
   Redirect
 } from 'react-router-dom'
+import { columnsTotalWidthSelector } from '@material-ui/data-grid';
 
 class App extends Component {
   state = {
@@ -88,6 +89,27 @@ class App extends Component {
     )
   }
 
+  dislikeRestaurant = (restaurantId) => {
+    console.log('hitting dislike button')
+    fetch(`http://localhost:3000/liked_restaurants/${restaurantId.id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        'Auth-Key': localStorage.getItem('auth_key')
+      }
+    })
+    .then(res => res.json())
+    .then(msg => {
+      console.log(msg)
+      
+
+      const updatedLikedRestaurants = [...this.state.likedRestaurants].filter(restaurant => restaurant.id !== restaurantId.id)
+      this.setState({
+        likedRestaurants: updatedLikedRestaurants
+      })
+    })
+  }
+
   likeFood = (newFood) => {
     
     fetch('http://localhost:3000/liked_foods',{
@@ -136,7 +158,8 @@ class App extends Component {
               restaurants={this.state.restaurants}
               isLoggedIn={this.state.isLoggedIn} 
               likedRestaurants={this.state.likedRestaurants} 
-              likeRestaurant={this.likeRestaurant}/>
+              likeRestaurant={this.likeRestaurant}
+              dislikeRestaurant={this.dislikeRestaurant}/>
             }}/>
 
             <Route exact path="/foods" component={() => {

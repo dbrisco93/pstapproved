@@ -15,7 +15,8 @@ class Restaurants extends React.Component {
                 restaurants={this.props.restaurants} 
                 isLoggedIn={this.props.isLoggedIn}
                 likedRestaurants={this.props.likedRestaurants}
-                likeRestaurant={this.props.likeRestaurant}/>
+                likeRestaurant={this.props.likeRestaurant}
+                dislikeRestaurant={this.props.dislikeRestaurant}/>
 
                 <Map 
                 restaurants={this.props.restaurants}

@@ -16,7 +16,7 @@ const RestaurantCard = props => {
             likedRestaurants.includes(props.restaurant.name)
             ?
             <button className="likebtn">
-                <Icon name="bookmark" />    
+                <Icon name="bookmark" onClick={()=> props.dislikeRestaurant(props.restaurant)}/>    
             </button>
             :
             <button className="likebtn" onClick={() => props.likeRestaurant(props.restaurant)}>
