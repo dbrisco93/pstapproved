@@ -6,10 +6,13 @@ import RestaurantContainer from './RestaurantContainer.js'
 class Restaurants extends React.Component {
 
     state = {
-        clickedMap: true,
-        zoom: 3,
-        lat: 0,
-        lng: 0,
+        searchTerm: ''
+    }
+
+    handleSearch = (e) => {
+        this.setState({
+            searchTerm: e.target.value
+        })
     }
 
 
@@ -22,7 +25,9 @@ class Restaurants extends React.Component {
                 isLoggedIn={this.props.isLoggedIn}
                 likedRestaurants={this.props.likedRestaurants}
                 likeRestaurant={this.props.likeRestaurant}
-                dislikeRestaurant={this.props.dislikeRestaurant}/>
+                dislikeRestaurant={this.props.dislikeRestaurant}
+                search={this.handleSearch}
+                searchTerm={this.state.searchTerm}/>
 
                 <Map
                 clicked={this.state.clickedMap}

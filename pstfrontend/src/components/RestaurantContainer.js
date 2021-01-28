@@ -1,12 +1,21 @@
 import '../App.css'
 import RestaurantCard from '../components/RestaurantCard'
+import { Icon } from 'semantic-ui-react'
 
 const RestaurantContainer = (props) => {
-    console.log(props.restaurants)
+    
+  let restaurants = props.restaurants.filter(restaurant => restaurant.name.toLowerCase().includes(props.searchTerm.toLowerCase()))
+
     return (
       <div className="RestaurantContainer">
+        <div className="search">
+          <span><Icon name="search" className="fa-search"></Icon></span>
+        <input onChange={(e)=> props.search(e)} className="prompt" placeholder="Search"/>
+
+        </div>
+
       <br></br>
-              {props.restaurants.map((restaurant) => (
+              {restaurants.map((restaurant) => (
                   <div className="card-design" key={restaurant.id}>
                       <RestaurantCard 
                         restaurant={restaurant}

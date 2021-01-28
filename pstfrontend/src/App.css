@@ -108,16 +108,27 @@ p.title {
 .main-btn {
   font-family: 'Permanent Marker', cursive;
   outline: 0;
-  background: #ffde59;
-  width: 75%;
+  color: #ffde59;
+  width: 40%;
   border: 0;
-  padding: 15px;
-  color: black;
-  font-size: 18px;
+  padding: 38px;
+  background-color: black;
+  font-size: 36px;
   -webkit-transition: all 0.3 ease;
   transition: all 0.3 ease;
   cursor: pointer;
-  border-radius: 25px;
+  border-radius: 50px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.main-btn a {
+  color: #ffde59;
+  
+}
+
+.main-btn a:hover {
+  color: white;
 }
 
 
@@ -275,4 +286,69 @@ div.food-card {
   text-align: center;
   background-color: inherit;
   height: 200px;
+}
+
+.profile-info {
+  float: right;
+}
+
+div.liked-container {
+  content: '';
+  display: table;
+  clear: both;
+  margin-left: 25%;
+}
+
+div.liked-restaurants {
+  width: 50%;
+  float: left;
+  padding: 70px;
+}
+
+div.liked-foods {
+  width: 50%;
+  float: left;
+  padding: 70px;
+}
+
+.search {
+position: relative;
+margin: 0 auto;
+text-align: center;
+width: 100%;
+}
+
+.search input {
+  /* text-indent: 30px; */
+  font-size: 15px;
+  width: 80%;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.search .fa-search {
+  position: absolute;
+  /* top: px; */
+  left: 85%;
+  font-size: 14.5px;
+}
+
+.text {
+  font-size: 22px;
+  text-align: center;
+  font-family: 'Ubuntu', sans-serif
+}
+
+.map-marker {
+ text-align: center;
+ padding: 10px; 
+}
+
+.Restaurants a, .Food a {
+  color: inherit;
+}
+
+.Restaurants a:hover, .Food a:hover {
+  color: black;
+  text-shadow: 2px 2px 8px rgb(180, 180, 180);
+
 }

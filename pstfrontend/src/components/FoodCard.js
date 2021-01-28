@@ -9,9 +9,19 @@ const FoodCard = props => {
         <div className="food-column">
             <div className="food-card">
             <h4 key={props.food.id}>{props.food.name}</h4>
-            <img src={`../images/${props.food.img_url}`} alt={props.img_url}></img>
+            
+            
+            {/* <img src={require('../images/'+image)} alt={name}></img> */}
+
             {props.food.restaurants.map((restaurant) => (
-                <p>{restaurant.name}</p>
+                <div>
+                    <br></br>
+                Restaurant Name:
+                {restaurant.name}
+                <br></br>
+                <a href={restaurant.pst_url} target='_blank' rel="noopener noreferrer">View on Instagram</a>
+                </div>
+    
             )
             )}
                 {
@@ -31,14 +41,25 @@ const FoodCard = props => {
     )
     }else{
         console.log(props.food.img_url)
+        let image = props.food.img_url
+        let name = props.food.name
         return(
             <div className="food-column">
             <div className="food-card">
             <h4 key={props.food.id}>{props.food.name}</h4>
             
-            <img src={`../images/${props.food.img_url}`} alt={props.img_url}></img>
+            
+            {/* <img src={require('../images/'+image)} alt={name}></img> */}
+
             {props.food.restaurants.map((restaurant) => (
-                <p>{restaurant.name}</p>
+                <div>
+                    <br></br>
+                Restaurant Name:
+                {restaurant.name}
+                <br></br>
+                <a href={restaurant.pst_url} target='_blank' rel="noopener noreferrer">View on Instagram</a>
+                </div>
+    
             )
             )}
             </div>

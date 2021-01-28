@@ -4,20 +4,10 @@ import {
     useLoadScript,
     Marker,
     InfoWindow,
-    // InfoWindow
 } from '@react-google-maps/api'
 import Mapstyles from '../Mapstyles'
-// import usePlacesAutocomplete, {
-//     getGeocode,
-//     getLatLng,
-//   } from "use-places-autocomplete";
-//   import {
-//     Combobox,
-//     ComboboxInput,
-//     ComboboxPopover,
-//     ComboboxList,
-//     ComboboxOption,
-//   } from "@reach/combobox";
+import { Icon } from 'semantic-ui-react'
+
 const libraries = ['places'];
 
 const mapContainerStyle = {
@@ -82,11 +72,11 @@ const onMapLoad = React.useCallback((map) => {
                   setSelected(null);
                 }}
                 >
-                  <div>
+                  <div className="map-marker">
                     <h3>{selected.name}</h3>
                     <h3>{selected.address}</h3>
-                    <h3>{selected.apple_url}</h3>
-                    <h3>Instagram:  {selected.ig}</h3>
+                    <h3><a href={selected.apple_url} target="_blank" rel="noopener noreferrer">Apple Maps</a></h3>
+                    <h3><a href={selected.ig_url} target="_blank" rel="noopener noreferrer"><Icon name="instagram"></Icon> {selected.ig}</a></h3>
 
                   </div>
                 </InfoWindow>
