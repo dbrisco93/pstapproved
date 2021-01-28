@@ -3,6 +3,7 @@ import {
     GoogleMap,
     useLoadScript,
     Marker,
+    InfoWindow,
     // InfoWindow
 } from '@react-google-maps/api'
 import Mapstyles from '../Mapstyles'
@@ -20,7 +21,7 @@ import Mapstyles from '../Mapstyles'
 const libraries = ['places'];
 
 const mapContainerStyle = {
-    width: '50vw',
+    width: '70vw',
     height: '100vh',
 }
 
@@ -53,17 +54,16 @@ const onMapLoad = React.useCallback((map) => {
   if (!isLoaded) return "Maps Loaded";
 
     return (
-      <div className="RestaurantContainer">
+      <div className="MapContainer">
 
 
         <GoogleMap
         mapContainerStyle={mapContainerStyle}
-        zoom={10}
+        zoom={11}
         center={center}
         options={options}
         onLoad={onMapLoad}
         >
-            {/* map through locations here also add onclick outside to show modal */}
             {props.restaurants.map((marker) => (
                 <Marker
                     key={`${marker.lat}-${marker.lng}`}
@@ -71,8 +71,27 @@ const onMapLoad = React.useCallback((map) => {
                     onClick={() => {
                       setSelected(marker);
                     }}
-                    />
+                  />
             ))}
+
+            {
+              selected ? (
+                <InfoWindow
+                position={{ lat: selected.lat, lng: selected.lng }}
+                onCloseClick={() => {
+                  setSelected(null);
+                }}
+                >
+                  <div>
+                    <h3>{selected.name}</h3>
+                    <h3>{selected.address}</h3>
+                    <h3>{selected.apple_url}</h3>
+                    <h3>Instagram:  {selected.ig}</h3>
+
+                  </div>
+                </InfoWindow>
+              ) : null}
+            
 
 
             {/* add info window with info here */}

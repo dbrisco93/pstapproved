@@ -7,6 +7,13 @@
   margin: 0;
 }
 
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+
 /* Navigation  */
 div.navigation {
     position: fixed;
@@ -47,7 +54,7 @@ div.dropdown {
 
 .navigation a:hover, .dropdown:hover .dropbtn {
   /* background-color: #ffde59; */
-  background-color: inherit;
+  background-color: white;
   /* color: #ffde59; */
   text-shadow: 2px 2px 8px rgb(180, 180, 180);
 
@@ -56,7 +63,7 @@ div.dropdown {
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: inherit;
+  background-color: white;
   min-width: 80px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 }
@@ -86,14 +93,34 @@ div.Main, div.Login, div.Signup, div.Food, div.Profile {
   overflow: scroll;
 }
 
-/* div.Main {
-  width: 100vw;
-  height: 100vh;
-  margin-top: 60px;
-  text-align: center;
-  font-family: 'Ubuntu', sans-serif;
+/* Main Container */
 
-} */
+p.title {
+  font-family: 'Permanent Marker', cursive;
+  font-size: 100px;
+  padding-top: 15vh;
+}
+
+.subtitle {
+  color: red;
+}
+
+.main-btn {
+  font-family: 'Permanent Marker', cursive;
+  outline: 0;
+  background: #ffde59;
+  width: 75%;
+  border: 0;
+  padding: 15px;
+  color: black;
+  font-size: 18px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+  border-radius: 25px;
+}
+
+
 
 /* Login Form */
 
@@ -199,7 +226,53 @@ div.Profile h2 {
 }
 
 div.RestaurantContainer {
-  flex: 50%;
+  width: 30vw;
   overflow: scroll;
   /* position: relative; */
+}
+
+div.MapContainer {
+  width: 70vw;
+}
+
+div.card-design{
+  /* border-radius: 5px; */
+  padding: 20px;
+  width: 100%;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+  position: relative;
+}
+
+.float {
+  float: right
+}
+
+
+/* food container is row */
+
+
+div.food-column {
+  float: left;
+  width: 25%;
+  padding: 0 10px;
+
+}
+
+div.food-container {
+  box-sizing: border-box;
+  margin: 0 -5px;
+
+}
+
+div.food-container:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+div.food-card {
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  text-align: center;
+  background-color: inherit;
+  height: 200px;
 }

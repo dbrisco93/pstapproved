@@ -50,5 +50,33 @@ f25 = Food.create(name: 'Brunch Burger', img_url: '22.png')
 
 
 rf1 = RestaurantFood.create(food_id: 1, restaurant_id: 45)
+rf2 = RestaurantFood.create(food_id: 2, restaurant_id: 46)
+rf3 = RestaurantFood.create(food_id: 3, restaurant_id: 47)
+rf4 = RestaurantFood.create(food_id: 4, restaurant_id: 49)
+rf5 = RestaurantFood.create(food_id: 4, restaurant_id: 48)
+rf6 = RestaurantFood.create(food_id: 6, restaurant_id: 50)
+rf7 = RestaurantFood.create(food_id: 7, restaurant_id: 51)
+rf8 = RestaurantFood.create(food_id: 8, restaurant_id: 52)
+rf9 = RestaurantFood.create(food_id: 9, restaurant_id: 53)
+rf10 = RestaurantFood.create(food_id: 10, restaurant_id: 53)
+rf11 = RestaurantFood.create(food_id: 11, restaurant_id: 53)
+rf12 = RestaurantFood.create(food_id: 12, restaurant_id: 54)
+rf13 = RestaurantFood.create(food_id: 13, restaurant_id: 56)
+rf14 = RestaurantFood.create(food_id: 13, restaurant_id: 55)
+rf15 = RestaurantFood.create(food_id: 14, restaurant_id: 57)
+rf16 = RestaurantFood.create(food_id: 15, restaurant_id: 58)
+rf17 = RestaurantFood.create(food_id: 16, restaurant_id: 59)
+rf18 = RestaurantFood.create(food_id: 16, restaurant_id: 60)
+rf19 = RestaurantFood.create(food_id: 17, restaurant_id: 59)
+rf20 = RestaurantFood.create(food_id: 17, restaurant_id: 60)
+rf21 = RestaurantFood.create(food_id: 18, restaurant_id: 61)
+rf22 = RestaurantFood.create(food_id: 19, restaurant_id: 62)
+rf23 = RestaurantFood.create(food_id: 20, restaurant_id: 63)
+rf24 = RestaurantFood.create(food_id: 21, restaurant_id: 63)
+rf25 = RestaurantFood.create(food_id: 22, restaurant_id: 64)
+rf26 = RestaurantFood.create(food_id: 23, restaurant_id: 66)
+rf27 = RestaurantFood.create(food_id: 23, restaurant_id: 65)
+
+
 
 

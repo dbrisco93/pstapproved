@@ -6,10 +6,10 @@ const Main = () => {
     return (
         <div className="Main">
             <div className="logo">
-            <p>PSTApproved</p>
-                <p>Houston Foodie</p>
-                <p><NavLink to="/restaurants">Browse Restaurants</NavLink></p>
-                <p><NavLink to="/foods">Browse Food</NavLink></p>
+            <p className="title">PSTApproved</p>
+                <p classname="subtitle">Houston Foodie</p>
+                <div classname="main-btn"><NavLink to="/restaurants">Browse Restaurants</NavLink></div>
+                <div classname="main-btn"><NavLink to="/foods">Browse Food</NavLink></div>
                 <p><button className="igButton"><Icon name="instagram" size="huge"></Icon></button></p>
 
             </div>

@@ -5,18 +5,18 @@ const RestaurantContainer = (props) => {
     console.log(props.restaurants)
     return (
       <div className="RestaurantContainer">
-          <ol>
+      <br></br>
               {props.restaurants.map((restaurant) => (
-                  <li key={restaurant.id}>
+                  <div className="card-design" key={restaurant.id}>
                       <RestaurantCard 
                         restaurant={restaurant}
                           isLoggedIn={props.isLoggedIn}
                           likeRestaurant={props.likeRestaurant}
                           likedRestaurants={props.likedRestaurants}
                           dislikeRestaurant={props.dislikeRestaurant} />
-                  </li>
+                  </div>
               ))}
-          </ol>
+
       </div>
     );
   }

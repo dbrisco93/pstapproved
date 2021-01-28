@@ -35,7 +35,7 @@ class LikedFoodsController < ApplicationController
         params.require(:liked_food).permit(:user_id, :food_id)
     end
 
-    def find_liked_restaurant
+    def find_liked_food
         @liked_food = LikedFood.find_by(id: params[:id])
     end
 

@@ -5,6 +5,12 @@ import RestaurantContainer from './RestaurantContainer.js'
 
 class Restaurants extends React.Component {
 
+    state = {
+        clickedMap: true,
+        zoom: 3,
+        lat: 0,
+        lng: 0,
+    }
 
 
     render() {
@@ -18,7 +24,8 @@ class Restaurants extends React.Component {
                 likeRestaurant={this.props.likeRestaurant}
                 dislikeRestaurant={this.props.dislikeRestaurant}/>
 
-                <Map 
+                <Map
+                clicked={this.state.clickedMap}
                 restaurants={this.props.restaurants}
                 loggedIn={this.props.isLoggedIn}/>
             </div>
